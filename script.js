@@ -1,10 +1,16 @@
+// Create and append the "Get Total Price" button
 const getSumBtn = document.createElement("button");
 getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
+// Create and append a div to display the total price
+const totalDisplay = document.createElement("div");
+totalDisplay.id = "ans";
+document.body.appendChild(totalDisplay);
+
 const getSum = () => {
-//Add your code here
-	const prices = document.querySelectorAll('.price');
+    // Select all elements with class 'price'
+    const prices = document.querySelectorAll('.price');
     let total = 0;
 
     // Iterate over the NodeList and sum up the prices
@@ -12,21 +18,8 @@ const getSum = () => {
         total += parseFloat(priceElement.textContent);
     });
 
-    // Create a new row
-    const totalRow = document.createElement('tr');
-    const totalCell = document.createElement('td');
-
-    // Set the colspan attribute to span across the entire table width
-    totalCell.setAttribute('colspan', 2);
-    totalCell.textContent = 'Total Price: ' + total;
-
-    // Append the cell to the row
-    totalRow.appendChild(totalCell);
-
-    // Append the row to the table
-    document.querySelector('table').appendChild(totalRow);
-  
+    // Display the total price in the #ans element
+    totalDisplay.textContent = 'Total Price: ' + total;
 };
 
 getSumBtn.addEventListener("click", getSum);
-
